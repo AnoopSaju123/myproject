@@ -20,25 +20,32 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
 		$pwd=$_POST["opswrd"];
 		$npswd=$_POST["npswrd"];
 
-		
-		$result=$conn->query("SELECT * FROM student WHERE email='$email' and passwrd='$pwd'");
-		if($result->num_rows>0)
+		if(!empty($_POST["opswrd"]))
 		{
-			$res=$conn->query("UPDATE student SET passwrd='$npswd' WHERE email='$email'");
+			$result=$conn->query("SELECT * FROM student WHERE email='$email' and passwrd='$pwd'");
+			if($result->num_rows>0)
+			{
+				$res=$conn->query("UPDATE student SET passwrd='$npswd' WHERE email='$email'");
+			}
+			else
+				$error="Incorrect password";
 		}
-		else
-			$error="Incorrect password";
 
 
-		if(isset($_POST["email"]))
+		if(!empty($_POST["email"]))
 		{
+		
 			$nemail=$_POST["email"];
 
 			$result=$conn->query("UPDATE student set email='$nemail' WHERE email='$email'");
+			$_SESSION["email"]=$nemail;
+			$email=$nemail;
 		}
-		if(isset($_POST["groupid"]))
+		if(!empty($_POST["groupid"]))
 		{
+
 			$groupid=$_POST["groupid"];
+			
 
 			$result=$conn->query("UPDATE student set groupid= '$groupid' WHERE email='$email'");
 		}
@@ -56,18 +63,23 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
 		$pwd=$_POST["opswrd"];
 		$npswd=$_POST["npswrd"];
 		
-		$result=$conn->query("SELECT * FROM Teacher WHERE email='$email' and passwrd='$pwd'");
-		if($result->num_rows>0)
+		if(!empty($_POST["opswrd"]))
 		{
-			$res=$conn->query("UPDATE Teacher SET passwrd='$npswd' WHERE email='$email'");
+			$result=$conn->query("SELECT * FROM Teacher WHERE email='$email' and passwrd='$pwd'");
+			if($result->num_rows>0)
+			{
+				$res=$conn->query("UPDATE Teacher SET passwrd='$npswd' WHERE email='$email'");
+			}
+			else
+				$error="Incorrect password";
 		}
-		else
-			$error="Incorrect password";
-		if(isset($_POST["email"]))
+		if(!empty($_POST["email"]))
 		{
 			$nemail=$_POST["email"];
 
 			$result=$conn->query("UPDATE Teacher set email='$nemail' WHERE email='$email'");
+			$_SESSION["email"]=$nemail;
+			$email=$nemail;
 		}
 
 
@@ -93,7 +105,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
 		else
 			$("#demo").text(x);
 		if(check=="Teacher")
-			$("#groupid").hide();
+			$("#group").hide();
 
 	});
 
@@ -149,9 +161,9 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
 		<label>Change email address</label>
 		<input type="text" name="email" class="form-control ">
 		</div>
-		<div class="form-group">
+		<div class="form-group" id="group" >
 		<label>Chenge group id</label>
-		<input type="text" name="groupid" id="groupid" class="form-control " >
+		<input type="text" name="groupid" class="form-control " >
 		</div>
 		<div class="form-group">
 		<button type="submit" class="btn btn-primary" >Submit</button>

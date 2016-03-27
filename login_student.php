@@ -202,7 +202,7 @@ $conn->close();
 		<h3><center><i>Login Page</i></center></h3>
 		<form action ="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>"  method="post" role="form">
 		<div class="form-group">
-			<label for="email" >Name</label>
+			<label for="email" >Email</label>
 			
 				<input type="text" class="form-control " name="email" id="email" value="<?php echo $email ?>"  placeholder="Enter email" required>
 		</div>
