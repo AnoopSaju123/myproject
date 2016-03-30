@@ -5,8 +5,21 @@ if(!(isset($_SESSION["name"])))
 		header("Location:login_student.php");
 	}
 
-?>
+$check =0;
+if($_SERVER["REQUEST_METHOD"]=="POST")
+{
+	$check=1;
+	$file=$_FILES["upload"]["name"];
+	$folder='uploads/';
+	$err=$_FILES["upload"]["error"];
+	$target=$folder.$file;
+	
+	$temp=$_FILES["upload"]["tmp_name"];
+	
+	move_uploaded_file($temp, $target);
 
+}
+?>	
 <html>
 <head>
 	<title>Welcome</title>
@@ -14,6 +27,18 @@ if(!(isset($_SESSION["name"])))
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<script src="jquery/jquery-1.12.2.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$("#upload").change(function(){
+					$("#myform").submit();
+			});
+			$("#browse").click(function(){
+			$("#upload").click();
+			});
+
+		})
+		
+	</script>
 
 	
 </head>
@@ -34,6 +59,11 @@ if(!(isset($_SESSION["name"])))
 		</ul>
  	 </div>
  	<br>
+
+ 	<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"])?>" method="post" id="myform" enctype="multipart/form-data">
+ 		<input type="file" name="upload" id="upload" style="display:none"></input>
+ 		<button class="btn btn-primary" type="button" id="browse">Upload</button>
+ 	</form>
 	
 </div>
 </body>

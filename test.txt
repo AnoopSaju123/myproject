@@ -1,0 +1,29 @@
+Ajax (also AJAX; /ˈeɪdʒæks/; short for asynchronous JavaScript and XML)[1][2][3] is a set of web development techniques using many web technologies on the client-side to create asynchronous Web applications. With Ajax, web applications can send data to and retrieve from a server asynchronously (in the background) without interfering with the display and behavior of the existing page. By decoupling the data interchange layer from the presentation layer, Ajax allows for web pages, and by extension web applications, to change content dynamically without the need to reload the entire page. Despite the name, the use of XML is not required (JSON is often used in the AJAJ variant), and the requests do not need to be asynchronous.[4]
+
+Ajax is not a technology, but a group of technologies. HTML and CSS can be used in combination to mark up and style information. The DOM is accessed with JavaScript to dynamically display – and allow the user to interact with – the information presented. JavaScript and the XMLHttpRequest object provide a method for exchanging data asynchronously between browser and server to avoid full page reloads.
+
+Contents
+
+    1 History
+    2 Technologies
+    3 Drawbacks
+    4 Example
+    5 See also
+    6 References
+    7 External links
+
+History
+
+In the early 1990s, most Web sites were based on complete HTML pages. Each user action required that a complete page be loaded from the server. This process was inefficient, as reflected by the user experience: all page content disappeared, then reappeared. Each time the browser reloaded a page because of a partial change, all of the content had to be re-sent, even though only some of the information had changed. This placed additional load on the server and used excessive bandwidth.
+
+In 1996, the iframe tag was introduced by Internet Explorer to load or to fetch content asynchronously.
+
+In 1998, Microsoft Outlook Web App team implemented the first component XMLHTTP by client script.
+
+In 1999, Microsoft used its iframe technology to dynamically update the news stories and stock quotes on the default page for Internet Explorer,[5] and created the XMLHTTP ActiveX control in Internet Explorer 5, which was later adopted by Mozilla, Safari, Opera and other browsers as the XMLHttpRequest JavaScript object.[6] Microsoft has adopted the native XMLHttpRequest model as of Internet Explorer 7. The ActiveX version is still supported in Internet Explorer, but not in Microsoft Edge. The utility of background HTTP requests to the server and asynchronous Web technologies remained fairly obscure until it started appearing in full scale online applications such as Outlook Web App (2000)[7] and Oddpost (2002).
+
+Google made a wide deployment of standards-compliant, cross browser Ajax with Gmail (2004) and Google Maps (2005).[8] In October 2004 Kayak.com's public beta release was among the first large-scale e-commerce uses of what their developers at that time called "the xml http thing".[9]
+
+The term "Ajax" was publicly stated on 18 February 2005 by Jesse James Garrett in an article titled "Ajax: A New Approach to Web Applications", based on techniques used on Google pages.[3]
+
+On 5 April 2006, the World Wide Web Consortium (W3C) released the first draft specification for the XMLHttpRequest object in an attempt to create an official Web standard.[10][11] The latest draft of the XMLHttpRequest object was published on 30 January, 2014.[12]
