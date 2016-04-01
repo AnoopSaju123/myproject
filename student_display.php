@@ -1,4 +1,6 @@
 <?php
+require_once __DIR__ . '/db_config.php';
+$conn = new mysqli(SERVER_NAME,USER_NAME,PASSWORD,DB_NAME);
 session_start();
 if(!(isset($_SESSION["name"])))
 	{
@@ -17,6 +19,11 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
 	$temp=$_FILES["upload"]["tmp_name"];
 	
 	move_uploaded_file($temp, $target);
+	$email=$_SESSION["email"];
+
+	$res=$conn->query("UPDATE student  SET  uploads='$target' where email='$email'");
+
+
 
 }
 ?>	
@@ -61,9 +68,10 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
  	<br>
 
  	<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"])?>" method="post" id="myform" enctype="multipart/form-data">
- 		<input type="file" name="upload" id="upload" style="display:none"></input>
+ 		<input type="file" name="upload" id="upload" style="display:none">
  		<button class="btn btn-primary" type="button" id="browse">Upload</button>
  	</form>
+ 	<a href="showuploads.php" class="btn btn-primary">Show uploads</a>
 	
 </div>
 </body>
